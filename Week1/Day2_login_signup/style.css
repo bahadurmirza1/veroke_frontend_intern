@@ -1,0 +1,96 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family:'Arial';
+}
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-image: url('./bg.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+.wrapper{
+    width: 400px;
+    background-color: white;
+    border-radius: 10px;
+    opacity: 0.7;
+}
+.wrapper h2{
+    font-size: 25px;
+    text-align: center;
+    margin: 25px;
+}
+.wrapper .input-box{
+    margin: 25px;
+    /* background-color: blue; */
+    position: relative;
+    /* margin-left: 10px;
+    margin-right: 10px; */
+    /* padding: 30px 40px; */
+}
+.input-box input{
+    width: 100%;
+    height: 100%;
+    border: none;
+    background: transparent;
+    outline: none;
+    border: 2px solid black;
+    /* border-radius: 40px; */
+    padding: 10px 20px 10px 10px;
+    border-left: none;
+    border-top: none;
+    border-right: none;
+
+}
+.input-box i{
+    position: absolute;
+    right: 20px;
+    transform: translateY(-50%);
+    top: 20px;
+}
+.input-box input::placeholder{
+    color: rgb(7, 0, 0);
+}
+.wrapper .remember-forgot{
+    display: flex;
+    justify-content: space-between;
+    font-size: 16px;
+    /* padding: 20px,20px,30px,30px; */
+    /* margin:-15px 0 15; */
+    padding-left: 25px;
+    padding-right: 25px;
+}
+.remember-forgot label input{
+    margin-right: 3px;
+
+}
+.remember-forgot a:hover{
+    text-decoration: underline;
+}
+.remember-forgot a{
+    text-decoration: none;
+}
+.wrapper .btn{
+    width: 90%;
+    height: 45px;
+    border-radius: 10px;
+    background: black;
+    color: white;
+    font-weight: 600;
+    text-align: center;
+    margin-left: 22px;
+    margin-top: 10px;
+}
+.wrapper .register{
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 25px;
+}
+.register p a{
+    text-decoration: none;
+}
