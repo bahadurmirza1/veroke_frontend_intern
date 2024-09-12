@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+    <div class="main">   
+    <nav class="main-nav">
+
+        <div class="logo"><img src="img/logo.png" alt="logo-image"></div>
+        <dialog id="dialog-box">
+            <button id="close-btn" autofocus>X</button>
+            <p><img src="img/group.png" alt="icon"></p>
+            <p><strong>Certification of Qualification Exam <br> Status</strong> </p>
+            <p>Update C of Q Exam status of the <br> Apprentice </p>
+            <label class="radio"><input type="radio"><strong>Pass</strong></label>
+            <label class="radio"><input type="radio"><strong>Fail</strong></label>
+            <div id="date-percent"><label>Date</label><label id="left-margin-label">Percentage</label></div>
+            <input class="input-text" type="text" value="04/16/2024">
+            <i class='bx bx-calendar'></i>
+            <input class="input-text" type="text" value="70%">
+            <div id="save">Save</div>
+          </dialog>
+          <button id="btn">
+        <div class="menu-item"><i class='bx bxs-dashboard'></i>Dashboard</div>
+    </button>
+
+        <div class="menu-item"><i class='bx bxs-user-pin'></i>Apprentice</div>
+        <div class="menu-item"><i class='bx bxs-time-five'></i>Log Hours</div>
+        <div class="menu-item"><i class='bx bxs-report'></i>Reports</div>
+        <div class="menu-item" id="gradient-color"><i class='bx bxs-graduation'></i>Apprentice Graduation</div>
+        <div class="menu-item"><i class='bx bxs-user-rectangle'></i>Employers</div>
+        <div class="menu-item"><i class='bx bxs-user'></i>Profile</div>
+        <div class="menu-item"><i class='bx bxs-cog'></i>Configurations</div>
+        <div class="menu-item"><i class='bx bxs-group'></i>User Managment</div>
+        
+        
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+
+        <div class="logout">
+            <img src="img/logoutt.png" alt="Logout"><strong>Logout</strong>
+        </div>
+
+
+    </nav>
+    
+    <div class="main-content">
+        <div class="header">
+            <strong>Apprentice Graduation</strong>
+            <div class="profile">
+                <span class="avatar">
+                    
+                </span>
+                <span>
+                    <strong class="center-name">Bahadur</strong>
+                    <p class="center-name">Super User</p>
+                    
+                </span>
+                <span>
+                    <i class='bx bxs-down-arrow'></i>
+                </span>
+            </div>
+        </div>
+
+        <div class="detail">
+            <img src="img/back.png" alt="back">
+            <!-- <i class='bx bx-arrow-back'></i> -->
+            Apprentice Graduation Details
+        </div>
+
+        <div class="main-summary">
+            <div class="summary"><strong>Graduation Summary</strong></div>
+            <div class="main-info">
+                
+                <div><div class="avatar-info"></div><strong>Mr. Bahadur</strong></div>
+
+                <div class="main-card">
+
+                <span class="card" id="card-1">
+                    <img src="img/clock.png" alt="clock-image">
+                    <p><strong>9,000</strong>Hours</p>
+                    <p>Agreement Hours</p>  
+                </span>
+                <span class="card" id="card-2">
+                    <img src="img/tick-square.png" alt="tick-image">
+                    <p><strong>160</strong>Hours</p>
+                    <p>Supplementary Training</p>
+                </span>
+                <span class="card" id="card-3">
+                    <img src="img/setting-2.png" alt="setting-image">
+                    <p><strong>Level 3</strong></p>
+                    <p>Trade School</p>
+                </span>
+                <span class="card" id="card-4">
+                    <img src="img/teacher.png" alt="teacher-image">
+                    <p><strong>800</strong>Hours</p>
+                    <p>Safety Trainings</p>
+                </span>
+
+                </div>
+                
+            </div>
+
+            <div class="main-variety">
+                <p><strong>Verify Apprentice</strong></p>
+                <div class="main-check">
+                <span>
+                <p>Log Hours </p>
+                <p>STC Hours</p>
+                <p>Trade School Level 3 </i></p>
+                <p>Supplementary Trainings </p>
+                <p>Certification of Qualification Status </p>
+                </span>
+                <span>
+                    <!-- <p></p> -->
+                    <i class='bx bx-check-square'></i>
+                    <i class='bx bx-check-square'></i>
+                    <i class='bx bx-check-square'></i>
+                    <i class='bx bx-check-square'></i>
+                    <span>+Update Status</span>
+                </span>
+            </div>                
+            </div>
+            <span class="person">
+                Graduate to Journey Person
+            </span>
+            
+        </div>
+
+        
+    </div>
+
+    
+    </div>
+    <script>
+        const dialog = document.querySelector("dialog");
+    const showButton = document.querySelector("dialog + button");
+    const closeButton = document.querySelector("dialog button");
+    
+    showButton.addEventListener("click", () => {
+      dialog.showModal();
+    });
+    
+    
+    closeButton.addEventListener("click", () => {
+      dialog.close();
+    });
+    
+      </script>
+</body>
+</html>
