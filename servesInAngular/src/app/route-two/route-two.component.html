@@ -1,0 +1,12 @@
+<div class="main">
+    <input class="txtfield" [(ngModel)]="name" type="text" placeholder="Name">
+    <br>
+    <input class="txtfield" [(ngModel)]="age" type="text" placeholder="Age">
+    
+    <Button (click)="onSend()">Send</Button>
+    
+    <p *ngFor="let i of items">
+        <b>Name:  &nbsp; </b>  {{i.name}} &nbsp;
+        <b>Age:  &nbsp;</b> {{i.age}}
+    </p>
+    </div>
