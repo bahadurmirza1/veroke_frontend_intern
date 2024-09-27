@@ -1,0 +1,21 @@
+<!-- <h1>user-form works!</h1>
+
+<p>{{findobj | json}}</p> -->
+
+<form action="" [formGroup]="formData">
+<input type="text" formControlName="name" placeholder="Name">
+<br>
+<input type="text" formControlName="email" placeholder="Email">
+<br>
+<input type="text" formControlName="phone" placeholder="Phone">
+<br>
+<input type="text" formControlName="address" placeholder="Address">
+<br>
+<input type="text" formControlName="education" placeholder="Education">
+</form>
+<br>
+
+<button *ngIf="type=='view'" (click)="onClear()">Clear</button>
+<button *ngIf="type!='view'" (click)="onSubmit()">{{type=='edit'?'Update':'Submit'}}</button>
+
+<!-- <button (click)="patchData()">Patch</button> -->

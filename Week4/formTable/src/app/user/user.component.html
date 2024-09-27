@@ -1,0 +1,10 @@
+<!-- <h1>user works!</h1>
+<p>{{id_type | json}}</p>
+<p>{{formRecords | json}}</p>
+<button (click)="id_MatchHandler()">Click</button> -->
+
+<app-user-form [type]="type" [findobj]="findobj" (UserFormEvent)="onUserFormHandler($event)"></app-user-form>
+
+<!-- <app-user-table [headers]="cols" (UserTableEvent)="onUserTableHandler($event)" [FormRecords]="formRecords"></app-user-table> -->
+
+<app-custom-table [actions]="actions" [headers]="cols" (UserTableEvent)="onUserTableHandler($event)" [FormRecords]="formRecords"></app-custom-table>

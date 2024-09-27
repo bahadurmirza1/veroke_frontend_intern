@@ -1,0 +1,32 @@
+.txtfield{
+    width: 340px;
+    margin-bottom: 15px;
+    height: 30px;
+    font-size: 18px;
+    border-radius: 5px;   
+}
+
+button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 350px;
+    height: 40px;
+    background-color: black;
+    border: none;
+    border-radius: 7px;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+}
+h1{
+    text-align: center;
+}
+.main{
+    margin-top: 50px;
+    border: 2px solid black;
+    margin-left: 450px;
+    padding: 40px;
+    border-radius: 8px;
+    width: 350px;
+}

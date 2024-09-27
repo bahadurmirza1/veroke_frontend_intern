@@ -2,6 +2,7 @@ import { Component,OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { StudentService } from '../services/student.service';
 import { CommonModule } from '@angular/common';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-route-one',
@@ -14,6 +15,7 @@ export class RouteOneComponent {
 name:any='';
 age:any='';
 items: any;
+
 
 onSend(){
   if(this.name && this.age){
@@ -28,11 +30,18 @@ onSend(){
   constructor(private std: StudentService) {}
 
   ngOnInit() {
-    this.std.data$.subscribe(data => {
+    this.subscription=this.std.data$.subscribe(data => {
       this.items = data;
     });
+ 
+  }
 
-    console.log(this.items)
+  private subscription!: Subscription;
+
+  ngOnDestroy():void{
+    if(this.subscription){
+      this.subscription.unsubscribe();
+    }
   }
 
 }
