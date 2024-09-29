@@ -1,0 +1,18 @@
+<h2>Form</h2>
+<div class="form">
+    <form action="" [formGroup]="formdata">
+        <input type="text" formControlName="name" placeholder="Name">
+        <br>
+        <input type="text" formControlName="email" placeholder="Email">
+        <br>
+        <input type="text" formControlName="phone" placeholder="Phone">
+        <br>
+        <input type="text" formControlName="address" placeholder="Address">
+        <br>
+        </form>
+        <br>
+        
+        <button (click)="onSubmit()">{{paramType=='add'?'Save':paramType=='edit'?'Update':'Go to table'}}</button>
+
+        <button *ngIf="paramType=='add'" (click)="gotoTable()"> Go To Table </button>
+</div>
