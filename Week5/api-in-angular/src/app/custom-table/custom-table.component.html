@@ -10,6 +10,7 @@
     <tbody>
         <tr *ngFor="let r of Records;let i=index">
             
+            
             <td *ngFor="let c of cols">
                 @if(c.key=='street' || c.key=='city'){
                     {{r.address[c.key]}}

@@ -1,18 +1,35 @@
-<h2>Form</h2>
+
 <div class="form">
+    <h2>Form</h2>
     <form action="" [formGroup]="formdata">
-        <input type="text" formControlName="name" placeholder="Name">
+        <mat-form-field class="width-increase">
+            <mat-label>Name</mat-label>
+            <input formControlName="name" matInput>
+        </mat-form-field>
+        <!-- <input type="text" formControlName="name" placeholder="Name"> -->
         <br>
-        <input type="text" formControlName="email" placeholder="Email">
+        <mat-form-field class="width-increase">
+            <mat-label>Email</mat-label>
+            <input formControlName="email" matInput>
+        </mat-form-field>
+        <!-- <input type="text" formControlName="email" placeholder="Email"> -->
         <br>
-        <input type="text" formControlName="phone" placeholder="Phone">
+        <mat-form-field class="width-increase">
+            <mat-label>Phone</mat-label>
+            <input formControlName="phone" matInput>
+        </mat-form-field>
+        <!-- <input type="text" formControlName="phone" placeholder="Phone"> -->
         <br>
-        <input type="text" formControlName="address" placeholder="Address">
+        <mat-form-field class="width-increase">
+            <mat-label>Address</mat-label>
+            <input formControlName="address" matInput>
+        </mat-form-field>
+        <!-- <input type="text" formControlName="address" placeholder="Address"> -->
         <br>
         </form>
         <br>
-        
-        <button (click)="onSubmit()">{{paramType=='add'?'Save':paramType=='edit'?'Update':'Go to table'}}</button>
-
-        <button *ngIf="paramType=='add'" (click)="gotoTable()"> Go To Table </button>
+        <button class="btn" mat-flat-button (click)="onSubmit()">{{paramType=='add'?'Save':paramType=='edit'?'Update':'Go to table'}}</button>
+        <br>
+        <br>
+        <button class="btn" mat-flat-button *ngIf="paramType=='add'" (click)="gotoTable()"> Go To Table </button>
 </div>

@@ -1,8 +1,8 @@
  
 
-<a routerLink="form/add/new"><button>Add Record</button></a>
+<a routerLink="form/add/new"><button mat-flat-button>Add Record</button></a>
 <br>
-<table border="2">
+<!-- <table border="2">
     <thead>
         <tr >
             <th *ngFor="let h of cols">{{h.label}}</th>
@@ -16,24 +16,66 @@
                     {{r[c.key]}}
                 }@else {
                     @for (a of actions; track $index) {
-                        <button (click)="onActionClick(r.id,a.key)">{{a.label}}</button>
+                        
+                        <button mat-fab aria-label="Example icon button with a delete icon" (click)="onActionClick(r.id,a.key)">
+                        @if(a.label=='Delete'){
+                            <mat-icon>delete</mat-icon>
+                        }@else if(a.label=='Edit'){
+                            <mat-icon>edit</mat-icon>
+                        }@else if(a.label=='View'){
+                            <mat-icon>home</mat-icon>
+                        }
+                        </button>
                     }
                 }
             </td>
-        <!-- <td>{{r.id}}</td>
-        <td>{{r.name}}</td>
-        <td>{{r.email}}</td>
-        <td>{{r.phone}}</td>
-        <td>{{r.address}}</td>
-        <td>
-            <button (click)="onView(r.id,'view')">View</button>
-            
-            <button (click)="onEdit(r.id,'edit')">Edit</button>
-            
-            <button (click)="onDelete(r.id,'delete')">Delete</button>
-        </td> -->
         </tr>
     </tbody>
-</table>
+</table> -->
 
-<button (click)="onClear()">Delete All</button>         
+<table mat-table [dataSource]="Records" class="mat-elevation-z8">
+    @for(c of cols; track $index){
+        @if(c!='actions'){
+        <ng-container matColumnDef={{c}}>
+            <th mat-header-cell *matHeaderCellDef> {{c}} </th>
+            <td mat-cell *matCellDef="let element"> {{element[c]}} </td>
+        </ng-container>
+        }
+        
+        
+        @else {
+            <ng-container matColumnDef='actions'>
+                <th mat-header-cell *matHeaderCellDef> {{c}} </th>
+                <td mat-cell *matCellDef="let element"> 
+                @for(a of actions; track $index){
+            
+                    <button class="margin-btn" mat-fab aria-label="Example icon button with a delete icon" (click)="onActionClick(element.id,a.key)">
+                        @if(a.label=='Delete'){
+                            <mat-icon>delete</mat-icon>
+                        }@else if(a.label=='Edit'){
+                            <mat-icon>edit</mat-icon>
+                        }@else{
+                            <mat-icon>home</mat-icon>
+                        }
+                    </button>
+                    
+                }
+                </td>
+            
+            
+            </ng-container>
+            
+
+        }
+
+        
+    }
+    <tr mat-header-row *matHeaderRowDef="cols"></tr>
+    <tr mat-row *matRowDef="let row; columns: cols"></tr>
+  
+    
+  </table>
+  
+  
+
+<button class="delete" mat-flat-button (click)="onClear()">Delete All</button>         

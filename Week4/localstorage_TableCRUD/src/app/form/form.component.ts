@@ -3,11 +3,16 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ActivatedRoute, Router} from '@angular/router';
 import { Subscription } from 'rxjs';
+import {MatInputModule} from '@angular/material/input';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatIconModule} from '@angular/material/icon';
+import {MatDividerModule} from '@angular/material/divider';
+import {MatButtonModule} from '@angular/material/button';
 
 @Component({
   selector: 'app-form',
   standalone: true,
-  imports: [ReactiveFormsModule,FormsModule,CommonModule],
+  imports: [MatIconModule,MatDividerModule,MatButtonModule,MatInputModule,MatFormFieldModule,ReactiveFormsModule,FormsModule,CommonModule],
   templateUrl: './form.component.html',
   styleUrl: './form.component.css'
 })
@@ -85,8 +90,10 @@ export class FormComponent {
     });
   }
     }
-    // this.AllRecords.length==0?this.id=1:this.id=this.AllRecords.length+1
-    this.id=this.AllRecords.length+1;
+    
+    this.AllRecords.length==0?this.id=1:this.id=this.AllRecords[this.AllRecords.length-1].id+1;
+    
+    // this.id=this.AllRecords.length+1;
     this.formdata.value.id=this.id;
     this.AllRecords.push(this.formdata.value);
     localStorage.setItem('AllRecords',JSON.stringify(this.AllRecords));
