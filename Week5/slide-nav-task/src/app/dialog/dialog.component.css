@@ -1,0 +1,25 @@
+.form{
+    text-align: center;
+    padding: 15px;
+}
+.width-increase{
+    width: 350px;
+}
+.btn{
+    width: 30px;
+}
+p{
+    margin: auto;
+    padding: 18px;
+}
+/* .alert{
+    width: 200px;
+    height: 200px;
+} */
+.btn-div{
+
+    display: flex;
+    overflow-y: hidden;
+    justify-content: space-around;
+    margin: 30px;
+}

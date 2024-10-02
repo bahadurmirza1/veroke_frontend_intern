@@ -1,0 +1,28 @@
+<p>Nav Bar</p>
+<div>
+<mat-drawer-container class="example-container" autosize>
+    <mat-drawer #drawer class="example-sidenav" mode="side">
+
+      <button [ngStyle]="{'color':flag?'#0257AE':'black','background-color':flag?'#AFC3DC':'white','border-radius':flag?'20px':'0px'}" class="btn" (click)="onTableClick()" mat-raised-button>
+        Table
+      </button>
+    
+      <!-- <br> -->
+      <button [ngStyle]="{'color':flag2?'#0257AE':'black','background-color':flag2?'#AFC3DC':'white','border-radius':flag2?'20px':'0px'}" class="btn" (click)="onFormClick()" mat-raised-button>
+        Form
+      </button>
+    </mat-drawer>
+  
+    <div>
+      <button type="button" mat-button (click)="drawer.toggle()">
+        Show/Hide Slide
+      </button>
+    </div>
+
+    <router-outlet></router-outlet>
+  
+</mat-drawer-container>
+
+
+  
+</div>
