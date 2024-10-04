@@ -10,7 +10,7 @@ export const routes: Routes = [
     //     component:AppComponent
     // },
     {
-        path:'form',
+        path:'form/:type/:id',
         component:FormComponent
     },
     {

@@ -1,0 +1,13 @@
+<form [formGroup]="myForm">
+    <div formArrayName="items">
+      <div *ngFor="let item of items.controls; let i = index">
+        <input [formControlName]="i" placeholder="Item {{ i + 1 }}">
+        <button (click)="removeItem(i)">Delete</button>
+      </div>
+    </div>
+    <button (click)="addItem()">Add Item</button>
+    <!-- <button type="submit" [disabled]="myForm.invalid">Submit</button> -->
+    <p *ngIf="items.value.length!=0">Form Array</p>
+    <p>{{items.value}}</p>
+  </form>
+  

@@ -35,7 +35,7 @@ export class FormComponent {
   }
 
   ngOnInit(){
-    debugger
+     
     this.id=this.localservice.getIdType().id;
     this.type=this.localservice.getIdType().type;
     if(this.type=='view' || this.type=='edit'){ 

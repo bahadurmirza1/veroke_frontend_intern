@@ -13,6 +13,7 @@ import { DialogComponent } from '../dialog/dialog.component';
 import { MatDialog } from '@angular/material/dialog';
 import { SuccessDialogComponent } from '../success-dialog/success-dialog.component';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { ApiService } from '../service/api.service';
 
 
 @Component({
@@ -30,7 +31,7 @@ export class FormComponent {
   serialno:number=1
   showSpinner: boolean = false;
 
-  constructor(private fb:FormBuilder,private route:ActivatedRoute,private routeNav:Router,private localservice:LocalstoreService){
+  constructor(private fb:FormBuilder,private route:ActivatedRoute,private routeNav:Router,private localservice:LocalstoreService,private apiService:ApiService){
     this.formdata=this.fb.group({
       id:[],
       name:['',Validators.required],
@@ -41,22 +42,23 @@ export class FormComponent {
   }
 
   ngOnInit(){
-    debugger
     this.id=this.localservice.getIdType().id;
     this.type=this.localservice.getIdType().type;
     if(this.type=='view' || this.type=='edit'){ 
-      if(this.id){
-        
+      if(this.id){ 
         this.formdata.patchValue(this.localservice.getObjbyId(this.id));
       }
     }
   }
-
+  refdialog:any;
   onSubmit(){
     if(this.type=='add'){
       if(this.formdata.valid){
+
+        
+
       this.Records=this.localservice.getLocalData();
-      this.Records.length==0?this.serialno=1:this.serialno=this.Records[this.Records.length-1].id+1
+      this.Records.length==0?this.serialno=1:this.serialno=this.Records[0].id+1
       this.formdata.value.id=this.serialno;
       this.localservice.setLocalData(this.formdata.value);
       this.showSpinner = true;
@@ -65,7 +67,14 @@ export class FormComponent {
         this.formdata.reset();
         this.openDialog();
       }, 2000);
-
+      this.apiService.setData(this.formdata.value).subscribe(
+        response => {
+          console.log("POST API CALLING ",response)
+        },
+        error => {
+          console.error('Error fetching data', error);
+        }
+      );
       
       }
       else{
@@ -74,10 +83,12 @@ export class FormComponent {
       
     }
     else if(this.type=='edit'){
+      
       if(this.formdata.valid){
       this.formdata.value.id=this.id;
       this.localservice.updateObjbyId(this.formdata.value)
       this.showSpinner = true;
+      
       setTimeout(() => {
         this.showSpinner = false;
         this.formdata.reset();
@@ -85,9 +96,19 @@ export class FormComponent {
         this.type='add';
         this.localservice.setIdType(this.formdata.value.id,this.type)
       }, 2000);
-
       
-    }else{
+
+      this.apiService.updateData(this.formdata.value).subscribe(
+          response => {
+            console.log("Update API Calling   ",response)
+          },
+          error => {
+            console.error('Error fetching data', error);
+          }
+        );
+    this.routeNav.navigate(['form/add/new']);
+    }
+    else{
       alert("Please Fill the Required Field!")
     }
   }

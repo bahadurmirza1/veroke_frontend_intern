@@ -3,12 +3,12 @@
 <mat-drawer-container class="example-container" autosize>
     <mat-drawer #drawer class="example-sidenav" mode="side">
 
-      <button [ngStyle]="{'color':flag?'#0257AE':'black','background-color':flag?'#AFC3DC':'white','border-radius':flag?'20px':'0px'}" class="btn" (click)="onTableClick()" mat-raised-button>
+      <button [ngStyle]="{'color':tableFlag?'#0257AE':'black','background-color':tableFlag?'#AFC3DC':'white','border-radius':tableFlag?'20px':'0px'}" class="btn" (click)="onTableClick()" mat-raised-button>
         Table
       </button>
     
       <!-- <br> -->
-      <button [ngStyle]="{'color':flag2?'#0257AE':'black','background-color':flag2?'#AFC3DC':'white','border-radius':flag2?'20px':'0px'}" class="btn" (click)="onFormClick()" mat-raised-button>
+      <button [ngStyle]="{'color': formFlag?'#0257AE':'black','background-color': formFlag?'#AFC3DC':'white','border-radius': formFlag?'20px':'0px'}" class="btn" (click)="onFormClick()" mat-raised-button>
         Form
       </button>
     </mat-drawer>

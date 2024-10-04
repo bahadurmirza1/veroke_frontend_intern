@@ -20,7 +20,7 @@ export class LocalstoreService {
   setLocalData(obj:any){
     this.setAllRecords=this.getLocalData();
 
-    this.setAllRecords.push(obj);
+    this.setAllRecords.splice(0,0,obj);
 
     localStorage.setItem("AllRecords",JSON.stringify(this.setAllRecords));
 

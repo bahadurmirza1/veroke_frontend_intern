@@ -40,4 +40,16 @@ export class CustomTableComponent {
       }
     );
 }
+
+onSet(){
+  this.apiService.setData().subscribe(
+    response => {
+      this.Records = response;
+      console.log('--',this.Records)
+    },
+    error => {
+      console.error('Error fetching data', error);
+    }
+  );
+}
 }

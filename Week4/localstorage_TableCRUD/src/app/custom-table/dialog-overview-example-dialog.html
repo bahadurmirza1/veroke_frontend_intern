@@ -1,0 +1,53 @@
+<!-- <h2 mat-dialog-title>Hi {{data.name}}</h2> -->
+<!-- <form action="" [formGroup]="formdata">
+<mat-dialog-content>
+  <mat-form-field>
+    <mat-label>Name</mat-label>
+    <input matInput formControlName="name" />
+  </mat-form-field>
+  <br>
+  <mat-form-field>
+    <mat-label>Email</mat-label>
+    <input matInput formControlName="email" />
+  </mat-form-field>
+  <br>
+  <mat-form-field>
+    <mat-label>Phone</mat-label>
+    <input matInput formControlName="phone" />
+  </mat-form-field>
+<br>
+  <mat-form-field>
+    <mat-label>Address</mat-label>
+    <input matInput formControlName="address" />
+  </mat-form-field>
+
+
+</mat-dialog-content>
+</form> -->
+<mat-dialog-content>
+    <mat-form-field>
+      <mat-label>Name</mat-label>
+      <input matInput [(ngModel)]="name" />
+    </mat-form-field>
+    <br>
+    <mat-form-field>
+        <mat-label>Email</mat-label>
+        <input matInput [(ngModel)]="email" />
+      </mat-form-field>
+<br>
+      <mat-form-field>
+        <mat-label>Phone</mat-label>
+        <input matInput [(ngModel)]="phone" />
+      </mat-form-field>
+<br>
+      <mat-form-field>
+        <mat-label>Address</mat-label>
+        <input matInput [(ngModel)]="address" />
+      </mat-form-field>
+
+</mat-dialog-content>
+
+<mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">No Thanks</button>
+  <button mat-button [mat-dialog-close]="{name:name(),email:email(),phone:phone(),address:address()}" cdkFocusInitial>Ok</button>
+</mat-dialog-actions>

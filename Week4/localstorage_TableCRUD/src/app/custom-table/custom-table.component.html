@@ -1,6 +1,15 @@
  
 
-<a routerLink="form/add/new"><button mat-flat-button>Add Record</button></a>
+<!-- <a routerLink="form/add/new"><button mat-flat-button>Add Record</button></a> -->
+
+<button mat-raised-button (click)="openDialog()">Add Record</button>
+
+<!-- @if (Formobj()) {
+    <li>
+      You chose: <em>{{Formobj()}}</em>
+    </li>
+  } -->
+
 <br>
 <!-- <table border="2">
     <thead>
@@ -32,6 +41,7 @@
         </tr>
     </tbody>
 </table> -->
+
 
 <table mat-table [dataSource]="Records" class="mat-elevation-z8">
     @for(c of cols; track $index){
