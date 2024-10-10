@@ -1,4 +1,5 @@
- 
+<p>{{nam}}</p>
+<!--  
 
 <br>
 <table border="2">
@@ -19,18 +20,16 @@
                 }
                 
             </td>
-
-        <!-- <td>{{r.id}}</td>
-        <td>{{r.name}}</td>
-        <td>{{r.email}}</td>
-        <td>{{r.address.street}}</td>
-        <td>{{r.address.city}}</td> -->
-
         </tr>
     </tbody>
 </table>
 
-<button (click)="onSet()">Post</button>         
+<button (click)="onSet()">Post</button>          -->
 
 
 <!-- <button (click)="onClear()">Delete All</button>          -->
+
+<div class="main" *ngFor="let r of Records">
+    <h3>{{r.id}}</h3>
+    <p>{{r.name}}</p>
+</div>

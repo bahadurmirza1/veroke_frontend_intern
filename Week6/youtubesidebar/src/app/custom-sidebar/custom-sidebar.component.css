@@ -1,0 +1,19 @@
+img{
+    width: 90px;
+}
+
+.sidenav-header{
+    text-align: center;
+    padding: 15px;
+}
+.header-txt{
+
+    >h4{
+        font-size: 16px;
+        margin: 0;
+    }
+    >p{
+        margin: 0;
+        font-size: 15px;
+    }
+}

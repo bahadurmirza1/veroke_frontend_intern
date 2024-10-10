@@ -1,0 +1,70 @@
+
+<!-- <button mat-flat-button (click)="onLogoutClick()">Logout</button> -->
+ <!-- <div class="text-center">
+
+    <h1>{{type}} Dashboard</h1>
+    <br>
+    <h3>Welcome <strong>{{name}}</strong></h3>
+
+</div> -->
+
+<mat-toolbar class="mat-elevation-z3">
+    <button mat-icon-button (click)="drawer.toggle()">
+      <mat-icon>menu</mat-icon>
+    </button>
+  </mat-toolbar>
+  
+<div>
+<mat-drawer-container class="example-container" autosize>
+    <mat-drawer #drawer class="example-sidenav" mode="side">
+
+      <!-- <button mat-raised-button>
+        Admin
+      </button>
+    
+      <br>
+      <button mat-raised-button>
+        Customer
+      </button> -->
+
+      <mat-nav-list>
+        <a mat-list-item (click)="adminClick()" >
+            Admin
+        </a>
+        <a mat-list-item (click)="customerClick()">
+            Customer
+        </a>
+    </mat-nav-list>
+
+    </mat-drawer>
+  
+    <div>
+      <!-- <button type="button" mat-button (click)="drawer.toggle()">
+        Show/Hide Slide
+      </button> -->
+    </div>
+
+     
+<table border="4">
+    <thead>
+        <tr >
+            <th *ngFor="let h of headers">{{h.label}}</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let element of allRecords;let i=index">
+            
+
+            <td>{{element.name}}</td>
+            <td>{{element.email}}</td>
+            <td>{{element.type}}</td>
+            <td>{{element.phone}}</td>
+        </tr>
+    </tbody>
+</table>
+  
+</mat-drawer-container>
+
+
+  
+</div>

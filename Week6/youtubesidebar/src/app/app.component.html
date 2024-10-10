@@ -1,0 +1,17 @@
+<mat-toolbar class="mat-elevation-z3">
+  <button mat-icon-button (click)="onMenuClick()">
+    <mat-icon>menu</mat-icon>
+  </button>
+</mat-toolbar>
+
+<mat-sidenav-container>
+
+  <mat-sidenav [opened]="flag_sidenav" >
+    <app-custom-sidebar></app-custom-sidebar>
+  </mat-sidenav>
+  
+  <mat-sidenav-content>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+
+</mat-sidenav-container>

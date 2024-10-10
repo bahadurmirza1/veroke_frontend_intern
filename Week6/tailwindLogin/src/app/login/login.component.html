@@ -1,0 +1,44 @@
+<div class="flex max-md:flex-col ">
+
+<div class="bg-color text-center text-white w-2/5 py-52 px-10 max-md:w-full h-screen max-md:h-10">
+    <strong class="text-3xl">Welcome to Veroke</strong>
+    <p class="mt-6">To keep conneted with us Please <br> login with your personal info</p>
+    <button class="w-52 mt-4 bg-color text-white p-2 rounded-3xl border-white border-2" (click)="gotoSignup()">SignUp</button>
+
+</div>
+<div class="w-3/5 text-center py-20 max-md:w-full h-screen max-md:h-10">
+    <strong class="text-3xl color">SignIn to Veroke</strong> 
+    <br>
+    <form action="" [formGroup]="formData" (ngSubmit)="onLoginClick()">
+
+    
+    <mat-form-field class="w-80 mt-16 rounded-2xl max-mb:w-72">
+        <mat-label>Enter your Email</mat-label>
+        <input formControlName="email" matInput placeholder="abc@example.com" (input)="onInput($event)" />
+        <button mat-icon-button matSuffix>
+            <mat-icon class="color">email</mat-icon>
+        </button>
+    </mat-form-field>
+    <br>
+    <mat-form-field class="w-80 rounded-2xl max-mb:w-72">
+        <mat-label>Enter your password</mat-label>
+        <input formControlName="password" matInput [type]="hide() ? 'password' : 'text'" />
+        <button
+          mat-icon-button
+          class="color"
+          matSuffix
+          (click)="clickEvent($event)"
+          [attr.aria-label]="'Hide password'"
+          [attr.aria-pressed]="hide()"
+        >
+          <mat-icon>{{hide() ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+      </mat-form-field>
+      <br>
+      <button class="w-80 mt-4 bg-color text-white p-2 rounded-2xl max-mb:w-72">Login</button>
+
+    </form>
+</div>
+
+</div>
+

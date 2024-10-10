@@ -1,0 +1,13 @@
+<div class="sidenav-header">
+    <img src="photo.png" alt="avatar">
+    <div class="header-txt">
+        <strong>Your Channnel</strong>
+        <p>Bahadur</p>
+    </div>
+</div>
+<mat-nav-list>
+    <a mat-list-item routerLink="{{menu.route}}" *ngFor="let menu of menuitems()">
+        <mat-icon matListItemIcon>{{menu.icon}}</mat-icon>
+        <span matListItemTitle>{{menu.label}}</span>
+    </a>
+</mat-nav-list>
