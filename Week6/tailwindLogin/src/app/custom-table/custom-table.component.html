@@ -1,0 +1,15 @@
+<table mat-table [dataSource]="allRecords" class="mat-elevation-z8">
+  @for(c of headers; track $index){
+
+      <ng-container matColumnDef={{c}}>
+          <th mat-header-cell *matHeaderCellDef> {{c | uppercase}} </th>
+          <td mat-cell *matCellDef="let element"> {{element[c]}} </td>
+      </ng-container>
+      
+      
+  }
+  <tr mat-header-row *matHeaderRowDef="headers"></tr>
+  <tr mat-row *matRowDef="let row; columns: headers"></tr>
+
+  
+</table>

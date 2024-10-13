@@ -14,26 +14,20 @@ import { MatDialog } from '@angular/material/dialog';
 import { SuccessDialogComponent } from '../success-dialog/success-dialog.component';
 import { LocalstoreService } from '../localstore.service';
 import { DialogComponent } from '../dialog/dialog.component';
-
-
 interface TypeList {
   value: string;
   viewValue: string;
 }
-
 @Component({
-  selector: 'app-signup',
+  selector: 'app-form',
   standalone: true,
   imports: [MatSelectModule,CommonModule,ReactiveFormsModule,MatFormFieldModule,MatInputModule,MatIconModule,MatButtonModule],
-  templateUrl: './signup.component.html',
-  styleUrl: './signup.component.css',
+  templateUrl: './form.component.html',
+  styleUrl: './form.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
 
 })
-
-
-
-export class SignupComponent {
+export class FormComponent {
 
   typeList: TypeList[] = [
     {value: 'admin', viewValue: 'Admin'},
@@ -53,9 +47,6 @@ export class SignupComponent {
     event.stopPropagation();
   }
 
-  protected onInput(event: Event) {
-    this.value.set((event.target as HTMLInputElement).value);
-  }
   formData:FormGroup;
   errorMessage = signal('')
   phoneErrorMsg=signal('')
@@ -63,6 +54,7 @@ export class SignupComponent {
   passErrorMsg=signal('')
   typeErrorMsg=signal('')
   confpasswordErrorMsg=signal('')
+
 
   passwordMatchValidator(form: AbstractControl): { [key: string]: boolean } | null {
     const password = form.get('password')?.value;
@@ -103,12 +95,8 @@ export class SignupComponent {
       .pipe(takeUntilDestroyed())
       .subscribe(() => this.updateErrorMessage());
   }
-
   ngOnInit(){
-    this.typeFromStore=localStorage.getItem('type')!
-    if(this.typeFromStore=='edit'){
-      this.formData.patchValue(JSON.parse(localStorage.getItem('login')!))
-    }
+    this.formData.patchValue(JSON.parse(localStorage.getItem('login')!))
   }
 
   get email() {
@@ -186,8 +174,6 @@ export class SignupComponent {
 
 
   }
-
-
   dialogref:any
   readonly dialog = inject(MatDialog);
   openDialog(titl:string,sms:string): void {
@@ -197,34 +183,10 @@ export class SignupComponent {
     });
   }
 
-  
-  signupData:any[]=[]
-  typeFromStore='';
   getOldData:any[]=[]
-  onSignupClick(){
-    this.typeFromStore=localStorage.getItem('type')!
 
-    if(this.formData.valid && this.typeFromStore=='add'){
-
-      //console.log("Signup",this.formData.value)
-      //this.signupData=localStorage.getItem('token')?JSON.parse(localStorage.getItem('token')!):[]
-      //this.signupData.push(this.formData.value)
-      //localStorage.setItem('token',JSON.stringify(this.signupData))
-      this.localstore.setLocalData(this.formData.value)
-
-      this.formData.reset();
-      this.openDialog('Congratulation 🎉',' You Successfully Created your Account');
-
-      setTimeout(() => {
-        this.dialogref.close()
-    }, 3000);
-    this.route.navigate(['auth/login'])
-    }else{
-      this.updateErrorMessage();
- 
-    }
-
-    if(this.formData.valid && this.typeFromStore=='edit'){
+  onUpdateClick(){
+    if(this.formData.valid){
 
       this.getOldData=this.localstore.getLocalData()
 
@@ -237,9 +199,6 @@ export class SignupComponent {
 
       localStorage.setItem('token',JSON.stringify(this.getOldData))
 
-      localStorage.setItem('type','add')
-      this.typeFromStore='add'
-
       this.formData.reset();
       this.openDialog('Data Updated',' You Successfully Updated Data');
 
@@ -251,14 +210,5 @@ export class SignupComponent {
       this.updateErrorMessage();
  
     }
-
-
   }
-
-  gotoSignin(){
-    this.route.navigate(['auth/login'])
-  }
-
 }
-
-

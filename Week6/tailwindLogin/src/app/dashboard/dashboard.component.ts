@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { Router, RouterLink, RouterOutlet } from '@angular/router';
+import { Component, inject } from '@angular/core';
+import { Router, RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { routes } from '../app.routes';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatIconModule} from '@angular/material/icon';
@@ -8,32 +8,41 @@ import {MatButtonModule} from '@angular/material/button';
 import { MatListModule } from '@angular/material/list';
 import {MatToolbarModule} from '@angular/material/toolbar'; 
 import { CommonModule } from '@angular/common';
+import { LocalstoreService } from '../localstore.service';
+import {MatTableModule} from '@angular/material/table';
+import { MatDialog } from '@angular/material/dialog';
+import { DialogComponent } from '../dialog/dialog.component';
 
 
 @Component({
   selector: 'app-dashboard',
   standalone: true,
-  imports: [CommonModule,RouterLink,MatToolbarModule,MatListModule,RouterOutlet,MatButtonModule,MatDividerModule,MatIconModule,MatSidenavModule],
+  imports: [MatTableModule,CommonModule,RouterLinkActive,RouterLink,MatToolbarModule,MatListModule,RouterOutlet,MatButtonModule,MatDividerModule,MatIconModule,MatSidenavModule],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.css'
 })
 export class DashboardComponent {
-  constructor(private route:Router){
+  constructor(private route:Router,private localstore:LocalstoreService){
 
   }
-  headers=[
-    {
-      label:'Name',key:'name',
-  },
-  {
-    label:'Email',key:'email',
-},
-{
-  label:'Type',key:'type',
-},
-{
-  label:'Phone',key:'phone',
-}
+
+//   headers=[
+//     {
+//       label:'Name',key:'name',
+//   },
+//   {
+//     label:'Email',key:'email',
+// },
+// {
+//   label:'Type',key:'type',
+// },
+// {
+//   label:'Phone',key:'phone',
+// }
+// ]
+
+headers=[
+  'name','email','type','phone'
 ]
     
   
@@ -49,8 +58,12 @@ allRecords:any[]=[]
         this.adminData.push(this.allRecords[index])
       }
     });
-
-    this.allRecords=this.adminData;
+    localStorage.setItem('admin_customerData',JSON.stringify(this.adminData))
+    this.route.navigate(['main/dashboard/table']);
+    setTimeout(()=>
+      window.location.reload()
+    ,10)
+    
 
   }
   customerData:any[]=[]
@@ -64,23 +77,46 @@ allRecords:any[]=[]
       }
     });
 
-    this.allRecords=this.customerData;
+     
+    
+    localStorage.setItem('admin_customerData',JSON.stringify(this.customerData))
 
+    this.route.navigate(['main/dashboard/table'])
+    setTimeout(()=>
+      window.location.reload()
+    ,10)
+
+  }
+  dialogref:any
+  readonly dialog = inject(MatDialog);
+  openDialog(titl:string,sms:string): void {
+    this.dialogref=this.dialog.open(DialogComponent, {
+      width: '250px',
+      data:{title:titl,msg:sms}
+    });
+
+    this.dialogref.afterClosed().subscribe((result: any) => {
+       
+      if(result=='yes'){
+        localStorage.removeItem('login');
+        window.location.reload()
+      }
+    });
   }
 
   onLogoutClick(){
-    localStorage.removeItem('key');
-    window.location.reload()
-  }
-
-  isLoggedIn(): boolean {
-    if(localStorage.getItem('key')){
-      return true
-    }else{
-      return false;
-    }
+    this.openDialog("Logout","Do you want to Logout?")
     
   }
+
+  // isLoggedIn(): boolean {
+  //   if(localStorage.getItem('key')){
+  //     return true
+  //   }else{
+  //     return false;
+  //   }
+    
+  // }
 getLoginData:any;
 name:string='';
 type:string='';
@@ -95,6 +131,14 @@ type:string='';
     this.getLoginData=localStorage.getItem('login')?JSON.parse(localStorage.getItem('login')!):null
     this.name=this.getLoginData.name;
     this.type=this.getLoginData.type;
+
+    this.allRecords=this.localstore.getLocalData();
+
+  }
+
+  goForEdit(){
+      // localStorage.setItem('type','edit')
+    this.route.navigate(['main/dashboard/form']);
 
   }
   

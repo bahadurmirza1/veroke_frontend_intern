@@ -11,7 +11,7 @@
         <br>
         <form action="" [formGroup]="formData" (ngSubmit)="onSignupClick()">
 
-            <mat-form-field class="w-80 mt-10 rounded-2xl max-mb:w-72">
+            <mat-form-field *ngIf="typeFromStore=='add'" class="w-80 mt-10 rounded-2xl max-mb:w-72">
                 <mat-label>Enter your Name</mat-label>
                 <input formControlName="name" matInput placeholder="bahadur" (blur)="updateErrorMessage()" required (input)="onInput($event)" />
                 <button mat-icon-button matSuffix>
@@ -94,9 +94,9 @@
                   <!-- <mat-error *ngIf="this.formData.errors?.['mismatch']">Password Must be Match</mat-error> -->
             </mat-form-field>
             <br>
-            <button class="w-80 bg-color text-white p-2 rounded-2xl max-mb:w-72" type="submit" >Submit</button>
+            <button class="w-80 bg-color text-white p-2 rounded-2xl max-mb:w-72" type="submit" > {{typeFromStore=='add'?'Submit':'Update'}}</button>
         
-            </form>
+        </form>
     </div>
     
     </div>

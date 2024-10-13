@@ -1,8 +1,11 @@
-<h2 mat-dialog-title>Incorrect Credientials</h2>
-<mat-dialog-content>
-  Incorrect Email or Password
+<h2  mat-dialog-title>{{data.title}}</h2>
+<mat-dialog-content >
+  {{data.msg}}
 </mat-dialog-content>
 <mat-dialog-actions>
   <!-- <button mat-button mat-dialog-close>No</button> -->
-  <button mat-button mat-dialog-close cdkFocusInitial>Ok</button>
+  <button *ngIf="data.title!='Logout'" mat-button mat-dialog-close cdkFocusInitial>Ok</button>
+  <button  *ngIf="data.title =='Logout'" mat-button mat-dialog-close=no cdkFocusInitial>No</button>
+  <button *ngIf="data.title =='Logout'" mat-button mat-dialog-close=yes cdkFocusInitial>Yes</button>
+
 </mat-dialog-actions>

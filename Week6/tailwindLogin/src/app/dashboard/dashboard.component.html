@@ -8,24 +8,22 @@
 
 </div> -->
 
-<mat-toolbar class="mat-elevation-z3">
+<mat-toolbar class="mat-elevation-z3 bg-color flex justify-between">
     <button mat-icon-button (click)="drawer.toggle()">
-      <mat-icon>menu</mat-icon>
+      <mat-icon class="text-white" style="font-size: 30px;">menu</mat-icon>
     </button>
-  </mat-toolbar>
+    <button class="text-white" (click)="goForEdit()">
+      <!-- <mat-icon class="text-white" style="font-size: 26px;">logout</mat-icon> -->
+       {{name}}
+    </button>
+    <button class="text-white" (click)="onLogoutClick()">
+      <mat-icon class="text-white" style="font-size: 26px;">logout</mat-icon>
+    </button>
+  </mat-toolbar>  
   
 <div>
 <mat-drawer-container class="example-container" autosize>
     <mat-drawer #drawer class="example-sidenav" mode="side">
-
-      <!-- <button mat-raised-button>
-        Admin
-      </button>
-    
-      <br>
-      <button mat-raised-button>
-        Customer
-      </button> -->
 
       <mat-nav-list>
         <a mat-list-item (click)="adminClick()" >
@@ -34,35 +32,13 @@
         <a mat-list-item (click)="customerClick()">
             Customer
         </a>
-    </mat-nav-list>
+
+      </mat-nav-list>
 
     </mat-drawer>
-  
-    <div>
-      <!-- <button type="button" mat-button (click)="drawer.toggle()">
-        Show/Hide Slide
-      </button> -->
-    </div>
 
-     
-<table border="4">
-    <thead>
-        <tr >
-            <th *ngFor="let h of headers">{{h.label}}</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let element of allRecords;let i=index">
-            
+<router-outlet></router-outlet>
 
-            <td>{{element.name}}</td>
-            <td>{{element.email}}</td>
-            <td>{{element.type}}</td>
-            <td>{{element.phone}}</td>
-        </tr>
-    </tbody>
-</table>
-  
 </mat-drawer-container>
 
 
