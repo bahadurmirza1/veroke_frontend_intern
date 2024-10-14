@@ -201,11 +201,14 @@ export class FormComponent {
 
       this.formData.reset();
       this.openDialog('Data Updated',' You Successfully Updated Data');
+      // localStorage.setItem('adminFlag','true')
+      localStorage.setItem('admin_customerData',JSON.stringify([]))
 
       setTimeout(() => {
         this.dialogref.close()
-    }, 3000);
-
+        window.location.reload()
+    }, 1000);
+    this.route.navigate(['main/dashboard/table'])
     }else{
       this.updateErrorMessage();
  

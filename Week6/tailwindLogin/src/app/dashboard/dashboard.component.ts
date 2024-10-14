@@ -49,7 +49,15 @@ headers=[
 
 adminData:any[]=[]
 allRecords:any[]=[]
+adminFlag='false';
   adminClick(){
+    this.adminFlag='true'
+    localStorage.setItem('adminFlag','true')
+    this.customerFlag='false'
+    localStorage.setItem('customerFlag','false')
+
+
+
     this.allRecords=[];
     this.adminData=[];
     this.allRecords=localStorage.getItem('token')?JSON.parse(localStorage.getItem('token')!):[]
@@ -67,7 +75,13 @@ allRecords:any[]=[]
 
   }
   customerData:any[]=[]
+  customerFlag='false'
   customerClick(){
+    this.customerFlag='true'
+    localStorage.setItem('customerFlag','true')
+    this.adminFlag='false'
+    localStorage.setItem('adminFlag','false')
+
     this.allRecords=[];
     this.customerData=[];
     this.allRecords=localStorage.getItem('token')?JSON.parse(localStorage.getItem('token')!):[]
@@ -134,11 +148,22 @@ type:string='';
 
     this.allRecords=this.localstore.getLocalData();
 
+  this.adminFlag=localStorage.getItem('adminFlag')!
+  
+  this.customerFlag=localStorage.getItem('customerFlag')!
+
+
   }
 
   goForEdit(){
       // localStorage.setItem('type','edit')
+    localStorage.setItem('adminFlag','false')
+    localStorage.setItem('customerFlag','false')
+    
     this.route.navigate(['main/dashboard/form']);
+    setTimeout(()=>
+      window.location.reload()
+      ,10)
 
   }
   

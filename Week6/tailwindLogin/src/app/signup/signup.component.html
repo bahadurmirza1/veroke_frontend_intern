@@ -60,6 +60,7 @@
                 <mat-label>Enter your password</mat-label>
                 <input formControlName="password" (blur)="passErrorMsg()" required matInput [type]="hide() ? 'password' : 'text'" />
                 <button
+                  type="button"
                   mat-icon-button
                   matSuffix
                   (click)="clickEvent($event)"
@@ -77,6 +78,7 @@
                 <mat-label>Confirm password</mat-label>
                 <input formControlName="confpassword" (blur)="confpasswordErrorMsg()" required matInput [type]="hide2() ? 'password' : 'text'" />
                 <button
+                  type="button"
                   mat-icon-button
                   matSuffix
                   (click)="clickEvent2($event)"

@@ -85,6 +85,10 @@ export class LoginComponent {
           this.inValid_email=false
           this.inValid_pass=false
           localStorage.setItem('login', JSON.stringify(this.fetchfromStorage[index]))
+
+          localStorage.setItem('adminFlag','false')
+          localStorage.setItem('customerFlag','false')
+
           this.route.navigate(['main/dashboard']);
           return
         }else{
@@ -94,15 +98,18 @@ export class LoginComponent {
           return
         }
       }else if(e.password==this.formData.value.password && this.flagCheck){
-        this.flagCheck=false
+
         if(e.email==this.formData.value.email){
+          this.flagCheck=false
           this.inValid_email_pass=false
           this.inValid_email=false
           this.inValid_pass=false
           localStorage.setItem('login', JSON.stringify(this.fetchfromStorage[index]))
+          localStorage.setItem('adminFlag','false')
+          localStorage.setItem('customerFlag','false')
           this.route.navigate(['dashboard']);
           return
-        }else{
+        }else if(index==this.fetchfromStorage.length){
           // wrong email
           this.inValid_email_pass=false
           this.inValid_pass=false

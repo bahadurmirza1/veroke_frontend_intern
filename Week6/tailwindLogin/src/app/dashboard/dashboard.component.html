@@ -23,13 +23,13 @@
   
 <div>
 <mat-drawer-container class="example-container" autosize>
-    <mat-drawer #drawer class="example-sidenav" mode="side">
+    <mat-drawer opened #drawer class="example-sidenav" mode="side">
 
       <mat-nav-list>
-        <a mat-list-item (click)="adminClick()" >
+        <a mat-list-item [ngStyle]="{'color':adminFlag=='true'?'white':'black','background-color':adminFlag=='true'?'#3AB19B':'white',}" (click)="adminClick()" >
             Admin
         </a>
-        <a mat-list-item (click)="customerClick()">
+        <a mat-list-item [ngStyle]="{'color':customerFlag=='true'?'white':'black','background-color':customerFlag=='true'?'#3AB19B':'white',}" (click)="customerClick()">
             Customer
         </a>
 

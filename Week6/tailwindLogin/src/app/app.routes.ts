@@ -17,8 +17,8 @@ export const routes: Routes = [
 
     {
         path:'auth/login',
-        // component:LoginComponent,
-        loadComponent: () => import('./login/login.component').then(m => m.LoginComponent),
+        component:LoginComponent,
+        // loadComponent: () => import('./login/login.component').then(m => m.LoginComponent),
         canActivate:[authLoginGuard]
     },
     {
@@ -35,15 +35,15 @@ export const routes: Routes = [
             },
             {
                 path:'table',
-                // component:CustomTableComponent
-                loadComponent: () => import('./custom-table/custom-table.component').then(m => m.CustomTableComponent)
+                component:CustomTableComponent
+                // loadComponent: () => import('./custom-table/custom-table.component').then(m => m.CustomTableComponent)
 
             }
         ]
     },
     {
         path:'auth/signup',
-        loadComponent: () => import('./signup/signup.component').then(m => m.SignupComponent)
-        // component:SignupComponent,
+        // loadComponent: () => import('./signup/signup.component').then(m => m.SignupComponent)
+        component:SignupComponent,
     },
 ];
