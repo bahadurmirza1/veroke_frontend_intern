@@ -1,0 +1,45 @@
+<button mat-raised-button (click)="addRecord()">Add Record</button>
+
+
+<table mat-table [dataSource]="Records" class="mat-elevation-z8">
+    @for(c of cols; track $index){
+        @if(c!='actions'){
+        <ng-container matColumnDef={{c}}>
+            <th mat-header-cell *matHeaderCellDef> {{c | uppercase}} </th>
+            <td mat-cell *matCellDef="let element"> {{element[c]}} </td>
+        </ng-container>
+        }
+        
+        
+        @else {
+            <ng-container matColumnDef='actions'>
+                <th mat-header-cell *matHeaderCellDef> {{c}} </th>
+                <td mat-cell *matCellDef="let element"> 
+                @for(a of actions; track $index){
+            
+                    <button class="ml-4"  (click)="onActionClick(element.id,a.key)">
+                        @if(a.label=='Delete'){
+                            <mat-icon>delete</mat-icon>
+                        }@else if(a.label=='Edit'){
+                            <mat-icon>edit</mat-icon>
+                        }@else{
+                            <mat-icon>visibility</mat-icon>
+                        }
+                    </button>
+                    
+                }
+                </td>
+            
+            
+            </ng-container>
+            
+
+        }
+
+        
+    }
+    <tr mat-header-row *matHeaderRowDef="cols"></tr>
+    <tr mat-row *matRowDef="let row; columns: cols"></tr>
+  
+    
+  </table>
