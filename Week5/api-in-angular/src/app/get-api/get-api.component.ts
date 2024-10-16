@@ -2,6 +2,7 @@ import { ChangeDetectionStrategy, ChangeDetectorRef, Component } from '@angular/
 import { ApiService } from '../api-service/api.service';
 import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
+import { concatMap } from 'rxjs';
 
 @Component({
   selector: 'app-get-api',
@@ -15,22 +16,24 @@ export class GetApiComponent {
   data:any;
   constructor(private apiService: ApiService,private cdref:ChangeDetectorRef) { }
   // constructor(private http:HttpClient){}
-  ngOnInit(): void {
+  ngOnInit(): void {    
+}
 
-    this.apiService.getData().subscribe(
-      response => {
-        this.data = response;
-        console.log(this.data)
-        setTimeout(() => {
-          this.cdref.detectChanges()
-        }, 3000);
-        
-      },
-      error => {
-        console.error('Error fetching data', error);
-      }
-    );
-    
+callApi(){
+ 
+  this.apiService.getEmpData().pipe(
+    concatMap((empData)=>{
+      console.log(empData)
+      return this.apiService.getStdData();
+    })
+  ).subscribe({
+    next:(stdData)=>{
+      console.log(stdData)
+    },
+    error:(error)=>{
+      console.error('Error',error)
+    }
+  })
 }
 
 

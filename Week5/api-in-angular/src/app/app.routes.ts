@@ -5,6 +5,6 @@ import { CustomTableComponent } from './custom-table/custom-table.component';
 export const routes: Routes = [
     {
         path:'',
-        component:CustomTableComponent
+        component:GetApiComponent
     }
 ];

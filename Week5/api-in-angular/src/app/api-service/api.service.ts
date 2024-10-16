@@ -7,14 +7,18 @@ import { Observable } from 'rxjs';
 })
 export class ApiService {
 
-  private apiUrl = 'https://jsonplaceholder.typicode.com';
+  private apiUrl = 'http://127.0.0.1:5000';
 
   constructor(private http: HttpClient) { }
 
   
 
-  getData(): Observable<any> {
-    return this.http.get<any>(`${this.apiUrl}/users`);
+  getEmpData(): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}/empData`);
+  }
+
+  getStdData(): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}/stdData`);
   }
 
   setData(): Observable<any> {

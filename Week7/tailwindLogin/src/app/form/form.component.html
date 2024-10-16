@@ -1,0 +1,90 @@
+<form class="text-center mt-10" [formGroup]="formData" (ngSubmit)="onUpdateClick()">
+
+    <!-- <mat-form-field class="w-80 mt-10 rounded-2xl max-mb:w-72">
+        <mat-label>Enter your Name</mat-label>
+        <input formControlName="name" matInput placeholder="bahadur" (blur)="updateErrorMessage()" required (input)="onInput($event)" />
+        <button mat-icon-button matSuffix>
+            <mat-icon >person</mat-icon>
+        </button>
+        @if (name!.invalid) {
+            <mat-error>{{nameErrorMsg()}}</mat-error>
+          }
+    </mat-form-field> -->
+    <br> 
+    <mat-form-field class="w-80 rounded-2xl max-mb:w-72">
+        <mat-label>Enter your Email</mat-label>
+        <input formControlName="email" matInput placeholder="abc@example.com" (blur)="updateErrorMessage()" required />
+        <button mat-icon-button matSuffix>
+            <mat-icon >email</mat-icon>
+        </button>
+        @if (email!.invalid) {
+            <mat-error>{{errorMessage()}}</mat-error>
+          }
+    </mat-form-field>
+    <br>
+    <mat-form-field class="w-80 rounded-2xl max-mb:w-72">
+        <mat-label>Enter your Phone</mat-label>
+        <input formControlName="phone" matInput placeholder="+92 3315016170" (blur)="phoneErrorMsg()" required />
+        <button mat-icon-button matSuffix>
+            <mat-icon >phone</mat-icon>
+        </button>
+        @if (phone!.invalid) {
+            <mat-error>{{phoneErrorMsg()}}</mat-error>
+          }
+    </mat-form-field>
+    <br>
+    <mat-form-field class="w-80 rounded-2xl max-mb:w-72">
+        <mat-label>Type</mat-label>
+        <mat-select formControlName="type">
+          @for (type of typeList; track type) {
+            <mat-option [value]="type.value">{{type.viewValue}}</mat-option>
+          }
+        </mat-select>
+        @if (type!.invalid) {
+            <mat-error>{{typeErrorMsg()}}</mat-error>
+          }
+      </mat-form-field >
+    <br>
+    <mat-form-field class="w-80 rounded-2xl max-mb:w-72">
+        <mat-label>Enter your password</mat-label>
+        <input formControlName="password" (blur)="passErrorMsg()" required matInput [type]="hide() ? 'password' : 'text'" />
+        <button
+          type="button"
+          mat-icon-button
+          matSuffix
+          (click)="clickEvent($event)"
+          [attr.aria-label]="'Hide password'"
+          [attr.aria-pressed]="hide()"
+        >
+          <mat-icon>{{hide() ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+        @if (password!.invalid) {
+            <mat-error>{{passErrorMsg()}}</mat-error>
+          }
+    </mat-form-field>
+    <br>
+    <mat-form-field class="w-80 rounded-2xl max-mb:w-72">
+        <mat-label>Confirm password</mat-label>
+        <input formControlName="confpassword" (blur)="confpasswordErrorMsg()" required matInput [type]="hide2() ? 'password' : 'text'" />
+        <button
+        type="button"
+          mat-icon-button
+          matSuffix
+          (click)="clickEvent2($event)"
+          [attr.aria-label]="'Hide password'"
+          [attr.aria-pressed]="hide2()"
+        >
+          <mat-icon>{{hide2() ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+        @if (confpassword!.invalid) {
+            <mat-error>{{confpasswordErrorMsg()}}</mat-error>
+        }
+        <div *ngIf="this.formData.errors?.['mismatch']">
+            <mat-error>Password must be Match</mat-error> 
+        </div>
+          <!-- <mat-error *ngIf="this.formData.errors?.['mismatch']">Password Must be Match</mat-error> -->
+    </mat-form-field>
+    <br>
+    <button class="w-80 bg-color text-white p-2 rounded-2xl max-mb:w-72" type="submit" >Update</button>
+
+</form>

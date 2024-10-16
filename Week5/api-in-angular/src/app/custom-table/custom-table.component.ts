@@ -34,24 +34,24 @@ export class CustomTableComponent {
   ngOnInit(): void {
     
 
-    this.ngZone.run(() => {
+  //   this.ngZone.run(() => {
       
-    this.apiService.getData().subscribe(
-      response => {
-        this.nam='mirza'
-        this.Records = response;
-        console.log('REc',this.Records)
-        setTimeout(() => {
-          this.cdref.detectChanges()
-        }, 3000);
+  //   this.apiService.getData().subscribe(
+  //     response => {
+  //       this.nam='mirza'
+  //       this.Records = response;
+  //       console.log('REc',this.Records)
+  //       setTimeout(() => {
+  //         this.cdref.detectChanges()
+  //       }, 3000);
        
         
-      },
-      error => {
-        console.error('Error fetching data', error);
-      }
-    );
-  });
+  //     },
+  //     error => {
+  //       console.error('Error fetching data', error);
+  //     }
+  //   );
+  // });
 }
 
 onSet(){
