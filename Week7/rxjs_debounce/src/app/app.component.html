@@ -1,0 +1,17 @@
+<form [formGroup]="searchForm">
+  <input style="margin-left: 50px;margin-top: 50px;padding: 10px;font-size: 18px;" formControlName="searchTerm" placeholder="Search..." />
+  <!-- <div class="example-container">
+  <mat-form-field>
+    <mat-label>Search Data by Name</mat-label>
+    <input
+      matInput
+      placeholder="Name"
+      formControlName="searchTerm"
+    />
+  </mat-form-field>
+</div> -->
+</form>
+<!-- <p>You are searching for: {{ searchForm.get('searchTerm')?.value }}</p> -->
+
+<p>Result:</p>
+<p>{{stdDataRes | json}}</p>
